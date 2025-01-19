@@ -1,6 +1,6 @@
-@extends('user.layout.app')
+@extends('admin.layout.app')
 @section('title')
-    user panel
+    admin panel
 @endsection
 @section('content')
     <div class="w-full h-[88%] bg-gray-200 flex items-center justify-center">
