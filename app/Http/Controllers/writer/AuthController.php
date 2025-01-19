@@ -37,7 +37,7 @@ class AuthController extends Controller
         }
     }
     public function logout(){
-        Auth::logout();
+        Auth::guard('writer')->logout();
         return to_route('writer.login.form');
     }
 }
