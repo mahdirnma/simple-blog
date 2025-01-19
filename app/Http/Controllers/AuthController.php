@@ -26,9 +26,15 @@ class AuthController extends Controller
         return view('user.login');
     }
     public function login(Request $request){
-/*        $myData=$request->only('email','password');
+        $myData=$request->only('email','password');
         if(Auth::attempt($myData)){
-            return to_route('user.dashboard.index');
-        }*/
+            return to_route('user.dashboard');
+        }else{
+            return to_route('user.login.form');
+        }
+    }
+    public function logout(){
+        Auth::logout();
+        return to_route('user.login.form');
     }
 }
