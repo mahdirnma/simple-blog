@@ -22,7 +22,7 @@
                     <tbody>
                     @foreach($posts as $post)
                         <tr>
-                            <td class="text-center">{{$post->is_publish==1?'yes':'no'}}</td>
+                            <td class="text-center">{{$post->is_published==1?'yes':'no'}}</td>
                             <td class="text-center">{{$post->description}}</td>
                             <td class="text-center">{{$post->title}}</td>
                             <td class="text-center">{{$post->id}}</td>

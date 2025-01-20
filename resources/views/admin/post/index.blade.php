@@ -23,12 +23,12 @@
                     @foreach($posts as $post)
                         <tr>
                             <td class="text-center">
-                                @if($post->is_publish==1)
+                                @if($post->is_published==1)
                                     yes
-                                @elseif($post->is_publish==0)
-                                    <form action="{{route('posts.edit',compact('post'))}}" method="get">
+                                @elseif($post->is_published==0)
+                                    <form action="{{route('admin.posts.update',compact('post'))}}" method="get">
                                         @csrf
-                                        <button type="submit" class="text-cyan-600">no</button>
+                                        <button type="submit" class="text-red-600 font-semibold">no</button>
                                     </form>
                                 @endif
                             </td>

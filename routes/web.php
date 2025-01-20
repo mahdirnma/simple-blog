@@ -31,6 +31,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('user.logout');
 Route::prefix('/admin')->group(function () {
     Route::middleware(['auth:admin'])->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('/posts/show', [PostController::class, 'show'])->name('admin.posts.show');
+        Route::get('/posts/update/{post}', [PostController::class, 'update'])->name('admin.posts.update');
     });
     Route::get('/register', [AdminAuthController::class, 'registerForm'])->name('admin.register.form');
     Route::post('/register', [AdminAuthController::class, 'register'])->name('admin.register');

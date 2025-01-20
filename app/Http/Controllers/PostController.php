@@ -42,7 +42,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $posts=Post::all();
+        return view('admin.post.index', compact('posts'));
     }
 
     /**
@@ -56,9 +57,12 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePostRequest $request, Post $post)
+    public function update(Post $post)
     {
-        //
+        $post->update([
+            'is_published'=>true,
+        ]);
+        return to_route('admin.posts.show');
     }
 
     /**
