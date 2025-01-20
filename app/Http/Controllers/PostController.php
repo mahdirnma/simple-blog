@@ -72,4 +72,18 @@ class PostController extends Controller
     {
         //
     }
+
+    public function postLike()
+    {
+        $user=Auth::user();
+        $posts=Post::all();
+        return view('user.post.index', compact('posts','user'));
+    }
+
+    public function AddPostLike(Post $post)
+    {
+        $user=Auth::user();
+        $user->posts()->attach($post);
+        return to_route('admin.posts.like');
+    }
 }

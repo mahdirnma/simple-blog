@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::middleware('auth')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('user.dashboard');
+    Route::get('/posts/like', [PostController::class, 'postLike'])->name('admin.posts.like');
+    Route::get('/posts/like/add/{post}', [PostController::class, 'AddPostLike'])->name('admin.posts.like.add');
 });
 Route::get('/login', [AuthController::class, 'loginForm'])->name('user.login.form');
 Route::post('/login', [AuthController::class, 'login'])->name('user.login');
@@ -44,7 +46,6 @@ Route::prefix('/admin')->group(function () {
 Route::prefix('/writer')->group(function () {
     Route::middleware(['auth:writer'])->group(function () {
         Route::get('/dashboard', [WriterController::class, 'index'])->name('writer.dashboard');
-
         Route::resource('posts', PostController::class)->only(['index', 'create', 'store']);
     });
     Route::get('/register', [WriterAuthController::class, 'registerForm'])->name('writer.register.form');
