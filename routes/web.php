@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\admin\AuthController as AdminAuthController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\writer\AuthController as WriterAuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WriterController;
@@ -41,6 +42,8 @@ Route::prefix('/admin')->group(function () {
 Route::prefix('/writer')->group(function () {
     Route::middleware(['auth:writer'])->group(function () {
         Route::get('/dashboard', [WriterController::class, 'index'])->name('writer.dashboard');
+
+        Route::resource('posts', PostController::class)->only(['index', 'create', 'store']);
     });
     Route::get('/register', [WriterAuthController::class, 'registerForm'])->name('writer.register.form');
     Route::post('/register', [WriterAuthController::class, 'register'])->name('writer.register');

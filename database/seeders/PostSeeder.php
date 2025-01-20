@@ -16,10 +16,12 @@ class PostSeeder extends Seeder
         Post::create([
             'title' => 'post 1',
             'description' => 'lorem ipsum dolor sit amet',
+            'writer_id' => 1,
         ]);
         Post::create([
             'title' => 'post 2',
             'description' => 'lorem ipsum dolor sit amet2',
+            'writer_id' => 1,
         ]);
 
     }
