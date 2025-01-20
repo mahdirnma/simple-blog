@@ -32,7 +32,9 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $writer=Auth::user();
+        $writer->posts()->create($request->validated());
+        return to_route('posts.index');
     }
 
     /**
